@@ -27,9 +27,13 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Convert repository name to lowercase
+        id: lowercase
+        run: echo "REPO_NAME=${{ github.repository }}" | tr '[:upper:]' '[:lower:]' > repo_name.txt
+
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
           context: .
           push: true
-          tags: ghcr.io/${{ github.repository | toLowerCase }}/mydsapp:latest
+          tags: ghcr.io/${{ steps.lowercase.outputs.repo_name }}/mydsapp:latest
