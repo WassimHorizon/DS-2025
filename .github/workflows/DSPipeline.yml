@@ -1,4 +1,4 @@
-name: DSPipeline
+name: DSPipeline 
 
 on:
   push:
@@ -33,4 +33,3 @@ jobs:
           context: .
           push: true
           tags: ghcr.io/${{ github.repository }}/mydsapp:latest
-
