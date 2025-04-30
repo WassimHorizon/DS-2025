@@ -1,4 +1,4 @@
-name: DSPipeline 
+name: DSPipeline
 
 on:
   push:
@@ -29,7 +29,9 @@ jobs:
 
       - name: Convert repository name to lowercase
         id: lowercase
-        run: echo "REPO_NAME=${{ github.repository }}" | tr '[:upper:]' '[:lower:]' > repo_name.txt
+        run: |
+          repo="${GITHUB_REPOSITORY,,}"
+          echo "repo_name=$repo" >> $GITHUB_OUTPUT
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
