@@ -32,4 +32,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/wassimbensalah/mydsapp:latest
+          tags: ghcr.io/${{ github.repository }}/mydsapp:latest
+
